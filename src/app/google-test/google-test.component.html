@@ -1,0 +1,53 @@
+<div class="body w-full flex">
+  <div class="flex w-full text-center pt-5">
+    <h1 class="font-weight-bold">Prueba de Google Vision</h1>
+  </div>
+  <div class="flex w-full mt-4">
+    <div class="row justify-content-center align-items-center">
+      <label class="mr-3 mt-2" for="myfile">Selecciona un archivo:</label>
+      <input
+        (change)="selectPic($event)"
+        type="file"
+        id="myfile"
+        name="myfile"
+      />
+    </div>
+    <div class="row justify-content-center align-items-center">
+      <button
+        (click)="manageCamera()"
+        class="btn btn-outline-danger mt-2 shadow"
+        id="snap"
+      >
+        {{ cameraButtonTitle }}
+      </button>
+    </div>
+    <div
+      [hidden]="!cameraEnabled"
+      id="video"
+      class="mt-2 row justify-content-center align-items-center video-wrap"
+    ></div>
+    <div
+      *ngIf="cameraEnabled"
+      class="row justify-content-center align-items-center mt-2"
+    >
+      <button (click)="takeSnapshot()" class="btn btn-warning shadow" id="snap">
+        Capture
+      </button>
+    </div>
+  </div>
+  <div class="flex justify-content-center text-center mt-3 w-full">
+    <div>
+      <img
+        id="facePic"
+        *ngIf="fuente; else pBlock"
+        src="{{ fuente }}"
+        alt="IMG_SELECT"
+        width="500"
+      />
+    </div>
+    <ng-template #pBlock>
+      <p>No hay imagen que mostrar</p>
+    </ng-template>
+    <canvas id="canvas" width="500"></canvas>
+  </div>
+</div>
