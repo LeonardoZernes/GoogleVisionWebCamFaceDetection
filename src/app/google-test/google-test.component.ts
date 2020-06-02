@@ -29,7 +29,7 @@ export class GoogleTestComponent implements OnInit {
   }
 
   public takeSnapshot() {
-    this.fuente = this.cameraService.takeSnapshot();
+    this.fuente = this.cameraService.takeSnapshotCanvas();
   }
 
   private async loadModels() {

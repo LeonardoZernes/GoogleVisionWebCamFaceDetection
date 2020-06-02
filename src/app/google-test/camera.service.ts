@@ -25,13 +25,18 @@ export class CameraService {
     }
   }
 
-  public takeSnapshot(): string {
+  public takeSnapshotCamera(): string {
     const video = document.getElementById("video") as HTMLVideoElement;
     const canvas = document.createElement("canvas");
     canvas.setAttribute("width", `${video.width}`);
     canvas.setAttribute("height", `${video.height}`);
     canvas.setAttribute("id", "capture");
     canvas.getContext("2d").drawImage(video, 0, 0, video.width, video.height);
+    return canvas.toDataURL();
+  }
+
+  public takeSnapshotCanvas(): string {
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement;
     return canvas.toDataURL();
   }
 }
